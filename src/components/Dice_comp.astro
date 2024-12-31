@@ -1,0 +1,12 @@
+---
+const {dice} = Astro.props;
+---
+
+<div class={"Dice "+dice.dice_type+" "+(dice.result.length===1?"a":"aa")}>
+    {dice.result.length>1?
+        <div class={"Dice_symbol "+dice.result[1]}/>
+        :
+        <div/>
+    }
+    <div class={"Dice_symbol "+dice.result[0]}/>
+</div>

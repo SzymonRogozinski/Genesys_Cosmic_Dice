@@ -1,0 +1,84 @@
+/*
+Dice symbols:
+b-Blank
+s-Success
+f-Failure
+t-Treat
+a-Advantage
+r-Triumph
+d-Despair
+*/
+
+export const dices = {
+    "Boost":[
+        "b",
+        "b",
+        "s",
+        "sa",
+        "aa",
+        "a"
+    ],
+    "Abillity":[
+        "b",
+        "s",
+        "s",
+        "ss",
+        "a",
+        "a",
+        "sa",
+        "aa"
+    ],
+    "Proficiency":[
+        "b",
+        "s",
+        "s",
+        "ss",
+        "ss",
+        "a",
+        "sa",
+        "sa",
+        "sa",
+        "aa",
+        "aa",
+        "r"
+    ],
+    "Setback":[
+        "b",
+        "b",
+        "f",
+        "f",
+        "t",
+        "t"
+    ],
+    "Difficulty":[
+        "b",
+        "f",
+        "ff",
+        "t",
+        "t",
+        "t",
+        "tt",
+        "ft"
+    ],
+    "Challenge":[
+        "b",
+        "f",
+        "f",
+        "ff",
+        "ff",
+        "t",
+        "t",
+        "ft",
+        "ft",
+        "tt",
+        "tt",
+        "d"
+    ]
+}
+
+export class Dice{
+    constructor(dice_type){
+        this.dice_type=dice_type;
+        this.result = dices[dice_type][0];
+    }
+}

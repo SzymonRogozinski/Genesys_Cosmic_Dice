@@ -1,0 +1,15 @@
+---
+import Section from "./Section.astro"
+import DiceComp from './Dice_comp.astro';
+import { Dice } from "../model/types";
+---
+
+<div class="Dice_roller">
+    <Section name="Add dice:"/>
+    <DiceComp dice={new Dice("Boost")}/>
+    <DiceComp dice={new Dice("Abillity")}/>
+    <DiceComp dice={new Dice("Proficiency")}/>
+    <DiceComp dice={new Dice("Setback")}/>
+    <DiceComp dice={new Dice("Difficulty")}/>
+    <DiceComp dice={new Dice("Challenge")}/>
+</div>
