@@ -24,10 +24,20 @@ body{
     margin: auto;
 }
 
+.App{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .Title{
     color: var(--Foreground);
     font-size: 69.46px;
     text-align: center;
+}
+
+.Title h3{
+    margin: 0%;
 }
 
 .Instruction{
@@ -40,6 +50,12 @@ body{
     color: var(--Foreground);
     font-size: 39.09px;
     text-align: left;
+    max-height: 100px;
+}
+
+.Section h6{
+    max-height: 100px;
+    margin: 0%;
 }
 
 .Box{

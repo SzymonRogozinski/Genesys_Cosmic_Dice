@@ -96,21 +96,95 @@ export class DicePool{
     }
 
     addDice(type:string){
+        if(this.dices.length>29)
+            return;
         this.dices.push(new Dice(type));
     }
 
     removeDice(id:number){
         this.dices.splice(id,1);
+        this.calcResult();
     }
 
     rollDice(){
-        let res="";
         for(let i=0; i<this.dices.length;i++){
             let dice:Dice = this.dices[i];
             let sides = dices[dice.dice_type];
             dice.result=sides[RealRandom(sides.length)];
-            res+=dice.result;
         }
-        console.log(res);
+        this.calcResult();
+    }
+
+    private calcResult(){
+        //Unpack results
+        var unpack:string[] = [];
+        for(let i=0; i<this.dices.length; i++){
+            let res = this.dices[i].result;
+            if (res.length>1){
+                unpack.push(res[0]);
+                unpack.push(res[1]);
+            }else{
+                unpack.push(res[0]);
+            }
+        }
+
+        //Calculate result occurrence
+        var sumUp = {
+            s:0,
+            a:0,
+            r:0,
+            d:0
+        };
+        for(let i=0; i<unpack.length; i++){
+            switch(unpack[i]){
+                case "s":{
+                    sumUp.s+=1;
+                    break;
+                }
+                case "f":{
+                    sumUp.s-=1;
+                    break;
+                }
+                case "a":{
+                    sumUp.a+=1;
+                    break;
+                }
+                case "t":{
+                    sumUp.a-=1;
+                    break;
+                }
+                case "r":{
+                    sumUp.r+=1;
+                    break;
+                }
+                case "d":{
+                    sumUp.d+=1;
+                    break;
+                }
+            }
+        }
+
+        //Get result
+        var newResult:string[] = [];
+        //Triumph
+        for(let i=0; i<sumUp.r; i++)
+            newResult.push("r");
+        //Despair
+        for(let i=0; i<sumUp.d; i++)
+            newResult.push("d");
+        //Success
+        for(let i=0; i<sumUp.s; i++)
+            newResult.push("s");
+        //Failure
+        for(let i=0; i>sumUp.s; i--)
+            newResult.push("f");
+        //Advantage
+        for(let i=0; i<sumUp.a; i++)
+            newResult.push("a");
+        //Threat
+        for(let i=0; i>sumUp.a; i--)
+            newResult.push("t");
+
+        this.results=newResult;
     }
 }

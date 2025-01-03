@@ -4,6 +4,7 @@ import Title from './component/title.tsx';
 import Instruction from './component/instruction.tsx';
 import Section from './component/section.tsx';
 import DiceComp from './component/dice_comp.tsx';
+import DiceSymbol from './component/dice_symbol.tsx';
 import Box from './component/box.tsx';
 import DiceRoller from './component/DiceRoller.tsx';
 import { DicePool } from './model/types.ts';
@@ -24,7 +25,9 @@ function App() {
       <DiceRoller dispatcher={dispatch}/>
       <Section name="Result"/>
       <Box children={undefined}>
-		
+        {state.dicePool.results.map((r, i)=>
+			    (<DiceSymbol symbol={r} idx={i}/>)
+		    )}
 	    </Box>
     </div>
   );
