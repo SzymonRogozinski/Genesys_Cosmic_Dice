@@ -1,10 +1,11 @@
 /*
 action info
 type:   Add_dice,             Remove_dice,        Roll_dice
-data:   string(Dice_type),    number(Dice_id),    None
+data:   string(Dice_type),    number(Dice_id),    dispatcher
 
 state info
 DicePool
+rolling:bool
 */
 
 export default function diceReducer(state, action){
@@ -18,8 +19,14 @@ export default function diceReducer(state, action){
             break;
         }
         case "Roll_dice": {
-            console.log(state.dicePool.dices);
-            state.dicePool.rollDice();
+            state.dicePool.rollDice().then(function() {
+                action.data({type:"Refresh"})
+            });
+            state.rolling=true;
+            break;
+        }
+        case "Refresh": {
+            state.rolling=false;
             break;
         }
     }

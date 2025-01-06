@@ -6,12 +6,12 @@ import Section from './component/section.tsx';
 import DiceComp from './component/dice_comp.tsx';
 import DiceSymbol from './component/dice_symbol.tsx';
 import Box from './component/box.tsx';
-import DiceRoller from './component/DiceRoller.tsx';
+import DiceRoller from './component/dice_roller.tsx';
 import { DicePool } from './model/types.ts';
 import diceReducer from './reducer.tsx';
 
 function App() {
-  const [state, dispatch] = useReducer(diceReducer,{dicePool: new DicePool()});
+  const [state, dispatch] = useReducer(diceReducer,{dicePool: new DicePool(), rolling: false});
   return (
     <div className="App">
       <Title/>
@@ -22,7 +22,7 @@ function App() {
 			    (<DiceComp dice={d} idx={i} callback={()=>dispatch({type:"Remove_dice", data:i})}/>)
 		    )}
 	    </Box>
-      <DiceRoller dispatcher={dispatch}/>
+      <DiceRoller state={state} dispatcher={dispatch}/>
       <Section name="Result"/>
       <Box children={undefined}>
         {state.dicePool.results.map((r, i)=>

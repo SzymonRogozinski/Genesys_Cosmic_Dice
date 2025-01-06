@@ -10,6 +10,7 @@
     --Background:#f8f5f0;
     --Foreground:#0e0e0e;
     --Border:#eca146;
+    --Blank:#e7c69e;
 }
 
 body{
@@ -152,4 +153,8 @@ body{
     height: 49px;
     border-radius: 15px;
     margin-left: auto;
+}
+
+.btn.roll.rolling{
+    background-color: var(--Blank);
 }

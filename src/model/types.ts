@@ -106,11 +106,11 @@ export class DicePool{
         this.calcResult();
     }
 
-    rollDice(){
+    async rollDice(){
         for(let i=0; i<this.dices.length;i++){
             let dice:Dice = this.dices[i];
             let sides = dices[dice.dice_type];
-            dice.result=sides[RealRandom(sides.length)];
+            dice.result=sides[await RealRandom(sides.length)];
         }
         this.calcResult();
     }
