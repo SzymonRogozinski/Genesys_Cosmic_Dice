@@ -31,10 +31,17 @@ async function RealRandomNumber(max:number){
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
               }
-        }).then((response) => response.json());
+        }).then((response) => {
+            if (response.status===402 || response.status===403)
+                throw new Error("Your Api key hit limit of daily request. Change to using build in random number generator.");
+            if (response.status!==200)
+                throw new Error("Unkown error. Change to using build in random number generator.");
+            return response.json();
+        });
         return response.result.random.data[0];
     } catch (error) {
         console.log(error);
+        alert();
         rollerState.useApi=false;
         return PseudoRandomNumber(max);
     }

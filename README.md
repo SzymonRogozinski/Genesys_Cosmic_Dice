@@ -1,46 +1,27 @@
-# Getting Started with Create React App
+# Genesys Cosmic Dice App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+This project is simple dice app for Genesys based games. It gets random numbers from random.org to achieve more true random results. Purpose of this idea was created when my friend state that all dice app are fake, because they lack of randomness. So, to show him that this is not true, I create this app.
 
-In the project directory, you can run:
+## Set up
+
+To app working as intended, user must get developer account in [random org domain](https://api.random.org/dashboard) and crete api key. Api key should be then write in file src/apikey.json.
+
+Without it, it would use build in random number generator.
+
+## Running app (by npm)
+
+Before starting app, all dependences must be downloaded, by using comand
+
+### `npm i`
+
+Then, to start app use
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## FAQ
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+There is a dice limit set on 40, but it can be change in src/model/types.js addDice function inside Dice class.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+App will inform when api key used all requests and change to normal rng. Other errors will be printed in console log.
